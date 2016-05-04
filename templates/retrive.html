@@ -1,0 +1,46 @@
+{% load staticfiles%}
+{% include 'static.html'%}
+{% include 'navbar.html'%}
+
+<div class='container'>
+{%block content %}
+<br><br/>
+<h1 > Students List </h1>
+
+<div class="row">
+
+<h2>
+{%for obj in qu%}
+
+
+</h2>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>{{obj.name}}</h3>
+        <p class ='lead'><a href="{% url 'detail' obj.id%}"><br/></a>
+        Branch - {{obj.branch}}<br/>
+        Roll No. - {{obj.roll_no}}<br/>
+        Days Attended - {{obj.days_attended}}<br/>
+        </p>
+        <div class="fb-like" data-href="{{request.absolute_build_uri}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">  </div>
+        <br><br/>      
+          <p><a href="{% url 'detail' obj.id %}" class="btn btn-primary" role="button">View Details</a></p>
+        <p><a href="{% url 'updatestudent' obj.id %}" class="btn btn-default" role="button">Update Attendance</a></p>    </div>
+    </div>
+  </div>
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+{% endfor%}
+</div>
+{% endblock%}
+
+</div>

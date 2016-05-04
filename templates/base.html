@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>TIT Excellence | Attendance</title>
+
+    <!-- Bootstrap core CSS -->
+{%include 'static.html' %}
+  </head>
+
+  <body>
+    <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+{% include 'navbar.html'%}
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    {% include 'jumbotron.html'%}
+
+
+    <div class="container">
+      <!-- Example row of columns -->
+
+      <div class="row">
+        <div class="col-md-4">
+          {%if request.user.is_authenticated%}
+          <h2>Update Students Information</h2>
+          <p><p><a class="btn btn-danger" href="{% url 'create'%}" role="button">Add Students</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2> Update total number of working days</h2>
+          <p><p><a class="btn btn-success" href="{% url 'updatedays'%}" role="button">Enter Number of Working Days </a></p>
+          {%endif%}
+       </div>
+        <div class="col-md-4">
+          <h2>View List of Students </h2>
+          <p><p><a class="btn btn-warning" href="{% url 'retrive'%}" role="button"> View Attendance</a></p>
+        </div>
+      </div>
+
+    {% block content%}
+    {%endblock%}
+
+      <hr>
+      <br><br/>
+      <footer>
+        <p>&copy; Made by-: Nitin Tiwari</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
